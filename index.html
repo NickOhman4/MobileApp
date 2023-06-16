@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="jquery-mobile-theme-192628-0/themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="jquery-mobile-theme-192628-0/themes/project.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+
+
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Mobile App</title>
+</head>
+
+<body>
+    <div data-role="page" id="pageone">
+        <div data-role="panel" id="myPanel">
+
+            <h2>Panel Header</h2>
+
+            <ul data-role="listview">
+
+                <li><a href="#movies">Movies</a></li>
+
+                <li><a href="#books">Books</a></li>
+
+                <li><a href="#drinks">Drinks</a></li>
+
+                <li><a href="#search">Search</a></li>
+
+                <li><a href="#form">Form</a></li>
+
+            </ul>
+        </div>
+        <div data-role="logo"><img src="bravelogo2.jpeg" alt="brave browswe logo" id="bravelogo"></div>
+
+        <div data-role="header" class="header">
+            <a href="#myPanel" class="ui-btn ui-btn-inline">Open Panel</a>
+            <h1>Favorite Things</h1>
+
+        </div>
+
+        <div data-role="navbar">
+            <ul>
+
+                <li><a href="#movies">Movies/TV Shows</a></li>
+                <li><a href="#books">Favorite Books</a></li>
+                <li><a href="#drinks">Favorite Drinks</a></li>
+                <li><a href="#form">Form</a></li>
+                <li><a href="#search" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-search">Search</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div data-role="listview" class="content2" id="info">
+            <div data-role="content">
+                <img src="entourage.jpeg" alt="Entourage The Movie">
+                <h3>Movies/TV Shows</h3>
+                <ul>
+                    <li>Harry Potter Series</li>
+                    <li>Entourage</li>
+                    <li>The Princess Bride</li>
+                </ul>
+                <button data-role="button"><a href="#movies">Go to Movies</a></button>
+            </div>
+            <div data-role="content">
+                <img src="bitcoin.jpeg" alt="The bitcoin standard book">
+                <h3>Books</h3>
+                <ul>
+                    <li>The Bitcoin Standard</li>
+                    <li>12 Rules for life</li>
+                    <li>Breath</li>
+                </ul>
+                <button data-role="button"><a href="#books">Go to Books</a></button>
+            </div>
+            <div data-role="content">
+                <img src="coffee2.jpeg" alt="a cup of coffee">
+                <h3>Drinks</h3>
+                <ul>
+                    <li>Coffee</li>
+                    <li>Juice</li>
+                    <li>Tea</li>
+                </ul>
+                <button data-role="button"><a href="#drinks">Go to Drinks</a></button>
+            </div>
+
+
+        </div>
+        <div data-role="footer">
+            <h1>Nick Ohman Copywrite 2023</h1>
+        </div>
+
+
+    </div>
+    <div data-role="page" id="movies">
+        <div data-role="header">
+            <button><a href="#pageone">Back</a></button>
+            <h1>Favorite Movies</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#movies">Movies/TV Shows</a></li>
+                <li><a href="#drinks">Favorite Drinks</a></li>
+                <li><a href="#books">Favorite Books</a></li>
+            </ul>
+        </div>
+        <div data-role="section">
+            <p>My Favorite Movies are... (Using Web Storage)</p>
+            <ul id="list"></ul>
+
+            <script>
+                $(document).ready(function () {
+                    var list = ["Entourage", "Harry Potter Series", "The Princess Bride"];
+
+                    var listString = JSON.stringify(list);
+                    localStorage.setItem('myList', listString);
+                    console.log('List saved to local storage.');
+
+
+                    var retrievedListString = localStorage.getItem('myList');
+                    var retrievedList = JSON.parse(retrievedListString);
+
+
+                    $.each(retrievedList, function (index, value) {
+                        var listItem = $('<li>').text(value);
+                        $('#list').append(listItem);
+                    });
+
+                    console.log('List retrieved from local storage.');
+                });
+            </script>
+        </div>
+        <div data-role="section" class="movies">
+            <div data-role="content" class="moviecontent">
+                <img src="entourage.jpeg" alt="Entourage The Movie">
+                <h2>Entourage Show/Movie</h2>
+                <p>2004-2011</p>
+                <p>The series was created and largely written by Doug Ellin and chronicles the acting career of Vincent
+                    Chase, a young A-list movie star, and his childhood friends from Queens, New York City, as they
+                    attempt to further their nascent careers in Los Angeles.</p>
+            </div>
+
+
+            <div data-role="content" class="moviecontent">
+                <img src="harrypotter.jpeg" alt="harry potter movie">
+                <h2>Harry Potter Series</h2>
+                <p>2001-2011</p>
+                <p>Harry Potter is a series of seven fantasy novels by British author J.K. Rowling. The books follow the
+                    adventures of young wizard Harry Potter and his best friends Ron Weasley and Hermione Granger. Each
+                    book corresponds to one year the trio attends Hogwarts School of Witchcraft and Wizardry.</p>
+            </div>
+
+            <div data-role="content" class="moviecontent">
+                <img src="princessbride.jpeg" alt="harry potter movie">
+                <h2>The Princess Bride</h2>
+                <p>1987</p>
+                <p>"The Princess Bride" is a classic fantasy romance film directed by Rob Reiner. It tells the story of
+                    a young woman named Buttercup, her true love Westley, and their journey to be reunited despite
+                    numerous obstacles. Filled with adventure, humor, and memorable characters like the swashbuckling
+                    Inigo Montoya and the villainous Prince Humperdinck, the movie combines action, comedy, and romance
+                    to create a timeless and beloved cinematic experience.</p>
+            </div>
+
+        </div>
+        <div data-role="content">
+
+        </div>
+    </div>
+
+    <div data-role="page" id="books">
+        <div data-role="header">
+            <button><a href="#pageone">Back</a></button>
+            <h1>Favorite Books</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#movies">Movies/TV Shows</a></li>
+                <li><a href="#drinks">Favorite Drinks</a></li>
+                <li><a href="#books">Favorite Books</a></li>
+            </ul>
+        </div>
+        <div data-role="section" class="movies">
+            <div data-role="content" class="moviecontent">
+                <img src="bitcoin.jpeg" alt="The Bitcoin Standard Book">
+                <h2>The Bitcoin Standard</h2>
+                <p>2018</p>
+                <p>"The Bitcoin Standard" is a book written by Saifedean Ammous that delves into the history, economics,
+                    and philosophy of Bitcoin. It explores the rise of Bitcoin as a decentralized digital currency and
+                    argues that it has the potential to become the global standard of money. The book discusses the
+                    flaws of the current fiat monetary system and highlights Bitcoin's unique properties, such as its
+                    scarcity and resistance to censorship. It also explores the implications of Bitcoin on individual
+                    freedom, economics, and the future of money.</p>
+            </div>
+
+
+            <div data-role="content" class="moviecontent">
+                <img src="12rules.jpeg" alt="12 rules for life book">
+                <h2>12 Rules for Life</h2>
+                <p>2018</p>
+                <p>"12 Rules for Life" is a book written by Jordan B. Peterson that offers guidance and insights on how
+                    to navigate the complexities of life. It provides a set of principles and rules that aim to improve
+                    one's personal and professional life. The book combines psychology, philosophy, and personal
+                    anecdotes to address topics such as responsibility, meaning, discipline, and the importance of
+                    individual growth. It encourages readers to take control of their lives, confront challenges, and
+                    find purpose in the face of chaos and uncertainty.</p>
+            </div>
+
+            <div data-role="content" class="moviecontent">
+                <img src="breath.jpeg" alt="Breath book">
+                <h2>Breath</h2>
+                <p>2020</p>
+                <p>"Breath" by James Nestor is a captivating exploration of the power and significance of breathing.
+                    Nestor delves into the science, history, and cultural practices surrounding breath, revealing its
+                    profound impact on our overall health and well-being. The book emphasizes the importance of proper
+                    breathing techniques and exposes how modern lifestyles have led to widespread breathing
+                    dysfunctions. Nestor offers practical insights and exercises to optimize our breathing patterns and
+                    improve various aspects of our lives, from physical performance to mental clarity. Overall, "Breath"
+                    serves as a compelling call to reevaluate and harness the transformative potential of our breath.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div data-role="page" id="drinks">
+        <div data-role="header">
+            <button><a href="#pageone">Back</a></button>
+            <h1>Favorite Drinks</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#movies">Movies/TV Shows</a></li>
+                <li><a href="#drinks">Favorite Drinks</a></li>
+                <li><a href="#books">Favorite Books</a></li>
+            </ul>
+        </div>
+        <div data-role="section" class="movies">
+            <div data-role="content" class="moviecontent">
+                <img src="coffee.jpeg" alt="A picture of coffee">
+                <h2>Coffee</h2>
+                <p>"The Bitcoin Standard" is a book written by Saifedean Ammous that delves into the history, economics,
+                    and philosophy of Bitcoin. It explores the rise of Bitcoin as a decentralized digital currency and
+                    argues that it has the potential to become the global standard of money. The book discusses the
+                    flaws of the current fiat monetary system and highlights Bitcoin's unique properties, such as its
+                    scarcity and resistance to censorship. It also explores the implications of Bitcoin on individual
+                    freedom, economics, and the future of money.</p>
+            </div>
+
+
+            <div data-role="content" class="moviecontent">
+                <img src="juice.jpeg" alt="A glass of juice">
+                <h2>Juice</h2>
+                <p>"12 Rules for Life" is a book written by Jordan B. Peterson that offers guidance and insights on how
+                    to navigate the complexities of life. It provides a set of principles and rules that aim to improve
+                    one's personal and professional life. The book combines psychology, philosophy, and personal
+                    anecdotes to address topics such as responsibility, meaning, discipline, and the importance of
+                    individual growth. It encourages readers to take control of their lives, confront challenges, and
+                    find purpose in the face of chaos and uncertainty.</p>
+            </div>
+
+            <div data-role="content" class="moviecontent">
+                <img src="tea.jpeg" alt="A glass of tea">
+                <h2>Tea</h2>
+                <p>"Breath" by James Nestor is a captivating exploration of the power and significance of breathing.
+                    Nestor delves into the science, history, and cultural practices surrounding breath, revealing its
+                    profound impact on our overall health and well-being. The book emphasizes the importance of proper
+                    breathing techniques and exposes how modern lifestyles have led to widespread breathing
+                    dysfunctions. Nestor offers practical insights and exercises to optimize our breathing patterns and
+                    improve various aspects of our lives, from physical performance to mental clarity. Overall, "Breath"
+                    serves as a compelling call to reevaluate and harness the transformative potential of our breath.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div data-role="page" id="form" data-add-back-btn="true">
+
+        <div data-role="header" data-add-back-btn="true">
+
+            <h1>What is your favorite movie?</h1>
+
+        </div>
+
+        <script>
+
+            (function () {
+
+                var rasm = document.querySelector('.localstorage');
+
+                function supportsLocalStorage() {
+
+                    return typeof (Storage) !== 'undefined';
+
+                }
+
+                if (!supportsLocalStorage()) {
+
+                    rasm.value = 'Your browser does not support localStorage.';
+
+                } else {
+
+                    try {
+
+                        setInterval(function () {
+
+                            localStorage.setItem('autosave', rasm.value);
+
+                        }, 1000);
+
+                    } catch (e) {
+
+                        if (e == QUOTA_EXCEEDED_ERR) {
+
+                            alert('Quota exceeded!');
+
+                        }
+
+                    }
+
+                    if (localStorage.getItem('autosave')) {
+
+                        rasm.value = localStorage.getItem('autosave');
+
+                    }
+
+                    document.querySelector('.clear').onclick = function () {
+
+                        rasm.value = '';
+
+                        localStorage.removeItem('autosave');
+
+                    };
+
+                    document.querySelector('.empty').onclick = function () {
+
+                        rasm.value = '';
+
+                        localStorage.clear();
+
+                    };
+
+                }
+
+            })();
+
+        </script>
+
+        <form action="form.php" method="post">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" id="fname">
+            <label for="mname">Movie Name</label>
+            <input type="text" name="mname" id="mname">
+            <label for="select-native-2">Which one if its a series</label>
+            <select name="select-native-2" id="select-native-2">
+                <option value="small">One</option>
+                <option value="medium">Two</option>
+                <option value="large">Three</option>
+                <option value="large">Four</option>
+                <option value="large">Five</option>
+                <option value="large">Six</option>
+                <option value="large">Seven</option>
+                <option value="large">Eight</option>
+            </select>
+            <label for="slider-2">Rate your movie 1-100</label>
+            <input type="range" name="slider-2" id="slider-2" value="50" min="0" max="100" data-highlight="true">
+            <label for="flip-2">Would you reccomend?</label>
+            <select name="flip-2" id="flip-2" data-role="slider">
+                <option value="off">No</option>
+                <option value="on">Yes</option>
+            </select>
+
+        </form>
+
+        <div data-role="footer">
+            <h1>Nick Ohman Copywrite 2023</h1>
+        </div>
+    </div>
+    <div data-role="page" id="search" data-add-back-btn="true">
+        <div data-role="header" data-add-back-btn="true">
+            <Button><a href="#pageone">Back</a></Button>
+            <h1>Search section </h1>
+        </div>
+        <div data-role="content" data-theme="c">
+            <ul data-role="listview" data-filter="true">
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#books">Books</a></li>
+                <li><a href="#drinks">Drinks</a></li>
+                <li><a href="#orm">Form</a></li>
+            </ul>
+        </div>
+        <div data-role="footer">
+            <h1>Nick Ohman Copywrite 2023</h1>
+        </div>
+    </div>
+    <div data-role="page" id="grid" data-add-back-btn="true">
+        <div data-role="header" data-add-back-btn="true">
+            <Button><a href="#pageone">Back</a></Button>
+            <h1>Grid </h1>
+        </div>
+        <div class="ui-grid-c">
+                <div class="ui-block-a">
+                <div class="ui-bar ui-bar-a" style="height:60px">Block 1-1</div>
+                <div class="ui-bar ui-bar-a" style="height:60px">Block 2-1</div>
+            </div>
+                <div class="ui-block-b">
+                <div class="ui-bar ui-bar-a" style="height:60px">Block 1-2</div>
+                <div class="ui-bar ui-bar-a" style="height:60px">Block 2-2</div>
+            </div>
+                <div class="ui-block-c">
+                <div class="ui-bar ui-bar-a" style="height:60px">Block 1-3</div>
+                <div class="ui-bar ui-bar-a" style="height:60px">Block 2-3</div>
+            </div>
+                <div class="ui-block-d">
+                <div class="ui-bar ui-bar-a" style="height:60px">Block 1-4</div>
+                <div class="ui-bar ui-bar-a" style="height:60px">Block 2-4</div>
+            </div>
+        </div>
+    </div>
+    <div data-role="panel" id="mypanel">
+
+    </div>
+
+
+
+</body>
+
+</html>

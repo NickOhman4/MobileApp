@@ -1,0 +1,30 @@
+#info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 10%;
+}
+h3 {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
+.movies {
+  display: flex;
+  flex-direction: row;
+  
+}
+.moviecontent {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+#bravelogo{
+    width: 5%;
+}
+
